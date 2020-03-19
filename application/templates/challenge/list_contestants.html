@@ -1,0 +1,14 @@
+{% extends "layout.html" %}
+
+{% block body %}
+  <table>
+    <tr>
+      <th>Kisassa mukana</th>
+    </tr>
+    {% for contestant in contestants %}
+    <tr>
+      <td>{{ contestant.name }}</td>
+    </tr>
+    {% endfor %}
+  </table>
+{% endblock %}
