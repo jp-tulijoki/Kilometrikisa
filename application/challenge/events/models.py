@@ -11,6 +11,8 @@ class Event(db.Model):
     distance = db.Column(db.Integer, nullable=False)
     description = db.Column(db.String)
 
+    account_id = db.Column(db.Integer, db.ForeignKey('account.id'), nullable=False)
+
     def __init__(self, date, sport, distance, description):
         self.date = date
         self.sport = sport

@@ -1,6 +1,6 @@
 from application import app, db
 from flask import redirect, render_template, request, url_for
-from application.challenge.models import Contestant
+from application.challenge.models import Event
 
 @app.route("/challenge/", methods=["GET"])
 def list_contestants():

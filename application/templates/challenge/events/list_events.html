@@ -1,0 +1,17 @@
+{% extends "layout.html" %}
+
+{% block body %}
+  <table>
+    <tr>
+      <th>Suorituksesi</th>
+    </tr>
+    {% for event in events %}
+    <tr>
+      <td>{{ event.date }}</td>
+      <td>{{ event.sport }}</td>
+      <td>{{ event.distance }}</td>
+      <td>{{ event.description }}</td>
+    </tr>
+    {% endfor %}
+  </table>
+{% endblock %}

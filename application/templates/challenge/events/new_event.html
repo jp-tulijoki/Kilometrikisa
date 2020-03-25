@@ -1,0 +1,44 @@
+{% extends "layout.html" %}
+
+{% block body %}
+<form method="POST" action="{{ url_for('create_event') }}">
+  <table>
+    <tr>
+      <td>
+        {{ form.date.label }}
+      </td>
+      <td>
+        {{ form.date }}
+      </td>
+    </tr>
+    <tr>
+      <td>
+        {{ form.sport.label }}
+      </td>
+      <td>
+        {{ form.sport }}
+      </td>
+    </tr>
+    <tr>
+      <td>
+        {{ form.distance.label }}
+      </td>
+      <td>
+        {{ form.distance }}
+      </td>
+    </tr>
+    <tr>
+      <td>
+        {{ form.description.label }}
+      </td>
+      <td>
+        {{ form.description }}
+      </td>
+    </tr>
+    <tr>
+  <td colspan="2">
+    <input type="submit" value="Lisää suoritus"/>
+  </td>
+    </tr>
+</form>
+{% endblock %}
