@@ -4,6 +4,8 @@ Harjoitustyönä tehtävä tietokantasovellus, jota työpaikat voivat käyttää
 
 [Linkki sovellukseen](https://kilometrikisailu.herokuapp.com/)
 
+Testitunnus: hello Salasana: world 
+
 [Tietokantakaavio](https://github.com/jp-tulijoki/Kilometrikisa/blob/master/documentation/database_diagram.jpg)
 
 [Käyttäjätarinat](https://github.com/jp-tulijoki/Kilometrikisa/blob/master/documentation/user%20story)
