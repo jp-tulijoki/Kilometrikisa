@@ -1,3 +1,12 @@
-Käyttäjänä haluan luoda tunnuksen ja kirjautua sisään. Haluan osallistua yhteen tai useampaan kilometrikisan sarjaan ja merkitä
-suoritukseni helposti. Haluan myös muokata tietojani ja suorituksiani sekä tarvittaessa poistaa suorituksia tai koko profiilini.
-Haluan tarkastella suorituksiani ja nähdä oman ja muiden sijoitukset eri sarjoissa.
+# Käyttötapaukset
+
+* käyttäjä haluaa luoda tunnuksen
+* käyttäjä haluaa kirjautua sisään
+* käyttäjä haluaa muokata tietojaan
+* käyttäjä haluaa pystyä tarvittaessa poistamaan profiilinsa 
+* käyttäjä haluaa osallistua yhteen tai useampaan kilometrikisan sarjaan
+* käyttäjä haluua merkitä suoritukset helposti
+* käyttäjä haluaa muokata suorituksiaan
+* käyttäjä haluaa tarvittaessa poistaa suorituksia
+* käyttäjä haluaa tarkastella suorituksia
+* käyttäjä haluaa nähdä oman ja muiden sijoitukset eri sarjoissa
