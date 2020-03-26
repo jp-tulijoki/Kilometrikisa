@@ -12,11 +12,13 @@
     </p>
     {% else %}
     <a href="{{ url_for('auth_login') }}">Kirjaudu</a>
+    <a href="{{ url_for('auth_registration') }}">Rekisteröidy</a>
     {% endif %}
-  
+    
     <ul>
       <a href="{{ url_for('list_events') }}">Listaa suorituksesi</a>
       <a href="{{ url_for('new_event') }}">Lisää uusi suoritus</a>
+
     <ul>
 
     {% block body %}

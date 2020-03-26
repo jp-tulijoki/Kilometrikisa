@@ -1,0 +1,73 @@
+{% extends "layout.html" %}
+
+{% block body %}
+<form method="POST" action="{{ url_for('save_event', event_id = event_id) }}">
+  <table>
+    <tr>
+      <td>
+        {{ form.date.label }}
+      </td>
+      <td>
+        {{ form.date }}
+      </td>
+        <ul>
+          {% for error in form.date.errors %}
+          <li>{{ error }}</li>
+          {% endfor %}
+        </ul>
+    </tr>
+    <tr>
+      <td>
+        {{ form.sport.label }}
+      </td>
+      <td>
+        {{ form.sport }}
+      </td>
+      <td>
+        <ul>
+          {% for error in form.sport.errors %}
+          <li>{{ error }}</li>
+          {% endfor %}
+        </ul>
+      </td>
+  </tr>
+    </tr>
+    <tr>
+      <td>
+        {{ form.distance.label }}
+      </td>
+      <td>
+        {{ form.distance }}
+      </td>
+      <td>
+        <ul>
+          {% for error in form.distance.errors %}
+          <li>{{ error }}</li>
+          {% endfor %}
+        </ul>
+      </td>
+  </tr>
+    </tr>
+    <tr>
+      <td>
+        {{ form.description.label }}
+      </td>
+      <td>
+        {{ form.description }}
+      </td>
+      <td>
+        <ul>
+          {% for error in form.description.errors %}
+          <li>{{ error }}</li>
+          {% endfor %}
+        </ul>
+      </td>
+  </tr>
+    </tr>
+    <tr>
+  <td colspan="2">
+    <input type="submit" value="Tallenna muokkaus"/>
+  </td>
+    </tr>
+</form>
+{% endblock %}

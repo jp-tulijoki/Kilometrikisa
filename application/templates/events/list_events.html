@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+
+{% block body %}
+  <table>
+    <tr>
+      <th>Suorituksesi</th>
+    </tr>
+    {% for event in events %}
+    <tr>
+      <td>{{ event.date }}</td>
+      <td>{{ event.sport }}</td>
+      <td>{{ event.distance }}</td>
+      <td>{{ event.description }}</td>
+      <td>
+        <form method="GET" action="{{ url_for('edit_event', event_id = event.id) }}">
+          <input type="submit" value="Muokkaa"/>
+        </form>
+      </td>
+      <td>
+        <form method="POST" action="{{ url_for('delete_event', event_id = event.id) }}">
+          <input type="submit" value="Poista"/>
+        </form>
+      </td>
+    </tr>
+    {% endfor %}
+  </table>
+{% endblock %}

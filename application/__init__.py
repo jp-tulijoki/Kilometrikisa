@@ -9,8 +9,8 @@ db = SQLAlchemy(app)
 
 from application import views
 
-from application.challenge.events import models
-from application.challenge.events import views
+from application.events import models
+from application.events import views
 
 from application.auth import models
 from application.auth import views
@@ -24,7 +24,7 @@ login_manager = LoginManager()
 login_manager.init_app(app)
 
 login_manager.login_view = "auth_login"
-login_manager.login_message = "Please login to use this functionality."
+login_manager.login_message = "Toiminto vaatii kirjautumisen."
 
 @login_manager.user_loader
 def load_user(user_id):
