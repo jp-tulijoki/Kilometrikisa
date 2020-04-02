@@ -1,5 +1,6 @@
 from application import db
 from application.models import Base
+from sqlalchemy import text
 
 class User(Base):
 
@@ -27,3 +28,18 @@ class User(Base):
 
     def is_authenticated(self):
         return True
+
+    @staticmethod 
+    def show_top_three_runners():
+        stmt = text("SELECT Account.name, Sum(Event.distance) as total_distance FROM Account "
+                    "LEFT JOIN Event ON Event.account_id = Account.id "
+                    "WHERE Event.league_id = 1 "
+                    "GROUP BY Account.name "
+                    "ORDER BY total_distance DESC LIMIT 3")
+        
+        result = db.engine.execute(stmt)
+        response = []
+        for row in result:
+            response.append({"nimi": row[0], "kilometrit":row[1]})
+
+        return response
