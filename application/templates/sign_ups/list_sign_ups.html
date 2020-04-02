@@ -3,15 +3,12 @@
 {% block body %}
   <table>
     <tr>
-      <th>Sarjat</th>
+      <th>Ilmoittautumisesi</th>
     </tr>
-    {% for league in leagues %}
+    {% for sign_up in sign_ups %}
     <tr>
-      <td>{{ league.league }}</td>
+      <td>{{ sign_up.league_id }}</td>
       <td>
-        <form method="POST" action="{{ url_for('sign_up', league_id = league.id) }}"></form>
-          <input type="submit", value="Ilmoittaudu"/>    
-        </form>
       </td>
     </tr>
     {% endfor %}

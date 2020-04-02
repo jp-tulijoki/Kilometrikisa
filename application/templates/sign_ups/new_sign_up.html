@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+
+{% block body %}
+<form method="POST" action="{{ url_for('create_sign_up') }}">
+  <table>
+    <tr>
+      <td>
+        {{ form.league.label }}
+      </td>
+      <td>
+        {{ form.league }}
+      </td>
+        <ul>
+          {% for error in form.league.errors %}
+          <li>{{ error }}</li>
+          {% endfor %}
+        </ul>
+    </tr>
+    <tr>
+      <td colspan="2">
+        <input type="submit" value="Lisää ilmoittautuminen"/>
+      </td>
+    </tr>
+</form>
+{% endblock %}

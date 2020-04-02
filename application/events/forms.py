@@ -1,10 +1,11 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, IntegerField, SelectField, validators
+from wtforms import StringField, IntegerField, validators
 from application.league.models import League
+from wtforms.ext.sqlalchemy.fields import QuerySelectField
 
 class EventForm(FlaskForm):
     date = StringField("PVM")
-    league_id = SelectField("Sarja",coerce=int, choices=[(1, "juoksu"), (2, "kävely"), (3, "pyöräily")])
+    league = QuerySelectField(u'Suoritustapa', query_factory=League.get_league_list, get_label='league')
     distance = IntegerField("Kilometrit")
     description = StringField("Kuvaus")
 
@@ -12,8 +13,3 @@ class EventForm(FlaskForm):
     class Meta:
         csrf = False
 
-class SearchForm(FlaskForm):
-    date = StringField("PVM")
-
-    class Meta:
-        csrf = False

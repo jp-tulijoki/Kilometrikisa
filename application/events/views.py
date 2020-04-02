@@ -18,7 +18,7 @@ def create_event():
     if not form.validate():
         return render_template("/events/new_event.html", form = form)
 
-    e = Event(form.date.data, form.league_id.data, form.distance.data, form.description.data)
+    e = Event(form.date.data, form.league.data.id, form.distance.data, form.description.data)
     e.account_id = current_user.id
   
     db.session().add(e)
@@ -37,7 +37,7 @@ def edit_event(event_id):
     e = Event.query.get(event_id)
     form = EventForm()
     form.date.data = e.date
-    form.league_id.data = e.league_id
+    form.league.data = e.league_id
     form.distance.data = e.distance
     form.description.data = e.description
     return render_template("/events/edit_event.html", form = form, event_id = event_id)
@@ -49,7 +49,7 @@ def save_event(event_id):
     form = EventForm(request.form)
     e = Event.query.get(event_id)
     e.date = form.date.data
-    e.league_id = form.league_id.data
+    e.league_id = form.league.data.id
     e.distance = form.distance.data
     e.description = form.description.data
     db.session().commit()
