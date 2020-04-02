@@ -18,14 +18,14 @@
     </tr>
     <tr>
       <td>
-        {{ form.sport.label }}
+        {{ form.league_id.label }}
       </td>
       <td>
-        {{ form.sport }}
+        {{ form.league_id }}
       </td>
       <td>
         <ul>
-          {% for error in form.sport.errors %}
+          {% for error in form.league_id.errors %}
           <li>{{ error }}</li>
           {% endfor %}
         </ul>
