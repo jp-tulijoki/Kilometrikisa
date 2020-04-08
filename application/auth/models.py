@@ -40,6 +40,6 @@ class User(Base):
         result = db.engine.execute(stmt)
         response = []
         for row in result:
-            response.append({"nimi": row[0], "kilometrit":row[1]})
+            response.append({"name": row[0], "distance":row[1]})
 
         return response
