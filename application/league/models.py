@@ -1,5 +1,7 @@
 from application import db
 from application.models import Base
+from application.sign_ups.models import Sign_up
+from flask_login import current_user
 
 class League(db.Model):
 
@@ -19,6 +21,9 @@ class League(db.Model):
         db.session().add(l3)
         db.session().commit()
 
-    def get_league_list():
+    def get_leagues_with_sign_up():
+        return League.query.join(Sign_up).filter(Sign_up.account_id == current_user.id)
+
+    def get_leagues_with_no_sign_up():
         return League.query
 
