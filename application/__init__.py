@@ -24,6 +24,8 @@ from application.auth import views
 from application.sign_ups import models
 from application.sign_ups import views
 
+from application.league.models import League
+
 from application.auth.models import User
 from os import urandom
 app.config["SECRET_KEY"] = urandom(32)
@@ -41,5 +43,10 @@ def load_user(user_id):
 
 try:
     db.create_all()
+except:
+    pass
+
+try:
+    League.initialize_leagues()
 except:
     pass

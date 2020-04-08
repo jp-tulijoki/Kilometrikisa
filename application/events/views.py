@@ -4,6 +4,7 @@ from flask_login import login_required, current_user
 from application import app, db
 from application.events.models import Event
 from application.events.forms import EventForm
+from application.league.models import League
 
 @app.route("/events/new_event", methods=["GET"])
 @login_required

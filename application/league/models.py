@@ -1,18 +1,23 @@
 from application import db
 from application.models import Base
-import enum
-from sqlalchemy import Integer, Enum
 
-class LeagueTypes(enum.Enum):
-    
-    juoksu = 1
-    kävely = 2
-    pyöräily = 3
+class League(db.Model):
 
-class League(Base):
+    id = db.Column(db.Integer, primary_key=True, unique=True)
+    name = db.Column(db.String, nullable=False, unique=True)
 
-    id = db.Column(Integer, primary_key=True)
-    league = db.Column(Enum(LeagueTypes))
+    def __init__(self, id, name):
+        self.id = id
+        self.name = name
+
+    def initialize_leagues():
+        l1 = League(1, "juoksu")
+        l2 = League(2, "kävely")
+        l3 = League(3, "pyöräily")
+        db.session().add(l1)
+        db.session().add(l2)
+        db.session().add(l3)
+        db.session().commit()
 
     def get_league_list():
         return League.query
