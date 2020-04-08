@@ -28,3 +28,12 @@ def create_sign_up():
 @login_required
 def list_sign_ups():
     return render_template("/sign_ups/list_sign_ups.html", sign_ups = Sign_up.query.filter_by(account_id=current_user.id).all())
+
+@app.route("/sign_ups/remove/<sign_up_id>", methods=["POST"])
+@login_required
+def remove_sign_up(sign_up_id):
+    s = Sign_up.query.get(sign_up_id)
+    db.session().delete(s)
+    db.session().commit()
+
+    return redirect(url_for("list_sign_ups"))

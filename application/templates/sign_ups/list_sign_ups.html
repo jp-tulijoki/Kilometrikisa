@@ -9,6 +9,11 @@
     <tr>
       <td>{{ sign_up.league_id }}</td>
       <td>
+      <td>
+        <form method="POST" action="{{ url_for('remove_sign_up', sign_up_id = sign_up.id) }}">
+          <input type="submit" value="Poista ilmoittautuminen"/>
+        </form>
+      </td>
       </td>
     </tr>
     {% endfor %}
