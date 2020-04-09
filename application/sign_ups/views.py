@@ -24,7 +24,7 @@ def create_sign_up():
   
     return redirect(url_for("list_sign_ups"))
 
-@app.route("/sign_ups/list_events", methods=["GET"])
+@app.route("/sign_ups/list_sign_ups", methods=["GET"])
 @login_required
 def list_sign_ups():
     return render_template("/sign_ups/list_sign_ups.html", sign_ups = Sign_up.query.filter_by(account_id=current_user.id).all())
