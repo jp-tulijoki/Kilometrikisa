@@ -25,5 +25,6 @@ class League(db.Model):
         return League.query.join(Sign_up).filter(Sign_up.account_id == current_user.id)
 
     def get_leagues_with_no_sign_up():
-        return League.query
+        subquery = db.session.query(Sign_up.league_id).filter(Sign_up.account_id == current_user.id)
+        return League.query.filter(League.id.notin_(subquery))
 
