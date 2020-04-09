@@ -15,12 +15,15 @@ def auth_login():
     user = User.query.filter_by(username=form.username.data).first()
     if not user:
         return render_template("auth/loginform.html", form = form,
-                               error = "Käyttäjää ei löydy")
+                               error = "Käyttäjää ei löydy.")
     else:
         if bcrypt.check_password_hash(user.password, form.password.data):
             print("Tervetuloa, " + user.name + "!")
             login_user(user)
-            return redirect(url_for("index")) 
+            return redirect(url_for("index"))
+        else: 
+            return render_template("auth/loginform.html", form = form,
+                               error = "Salasana on väärin.") 
 
 @app.route("/auth/logout")
 def auth_logout():
