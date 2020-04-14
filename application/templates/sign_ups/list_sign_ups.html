@@ -2,12 +2,14 @@
 
 {% block body %}
   <table>
+    {% if sign_ups %}
     <tr>
       <th>Ilmoittautumisesi</th>
     </tr>
     {% for sign_up in sign_ups %}
     <tr>
-      <td>{{ sign_up.league_id }}</td>
+      <td>
+        {{ sign_up.league.name }}</td>
       <td>
       <td>
         <form method="POST" action="{{ url_for('remove_sign_up', sign_up_id = sign_up.id) }}">
@@ -17,5 +19,8 @@
       </td>
     </tr>
     {% endfor %}
+    {% else %}
+    <tr>Ei ilmoittautumisia.</tr>
+    {% endif %}
   </table>
 {% endblock %}

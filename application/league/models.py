@@ -28,3 +28,5 @@ class League(db.Model):
         subquery = db.session.query(Sign_up.league_id).filter(Sign_up.account_id == current_user.id)
         return League.query.filter(League.id.notin_(subquery))
 
+    def get_one_league(league_id):
+        return League.query.get(league_id)

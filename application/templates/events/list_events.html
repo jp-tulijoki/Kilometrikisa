@@ -2,13 +2,20 @@
 
 {% block body %}
   <table>
+    {% if events %}
     <tr>
       <th>Suorituksesi</th>
     </tr>
     {% for event in events %}
     <tr>
+      <td>PVM</td>
+      <td>Sarja</td>
+      <td>Kilometrit</td>
+      <td>Kuvaus</td>
+    </tr>
+    <tr>
       <td>{{ event.date }}</td>
-      <td>{{ event.league_id }}</td>
+      <td>{{ event.league.name }}</td>
       <td>{{ event.distance }}</td>
       <td>{{ event.description }}</td>
       <td>
@@ -23,5 +30,8 @@
       </td>
     </tr>
     {% endfor %}
+    {% else %}
+    <tr>Ei suorituksia.</tr>
+    {% endif %}
   </table>
 {% endblock %}

@@ -4,6 +4,7 @@ from flask_login import login_required, current_user
 from application import app, db
 from application.sign_ups.models import Sign_up
 from application.sign_ups.forms import SignUpForm
+from application.league.models import League
 
 @app.route("/sign_ups/new_sign_up", methods=["GET"])
 @login_required
@@ -18,6 +19,7 @@ def create_sign_up():
     s = Sign_up()
     s.account_id = current_user.id
     s.league_id = form.league.data.id
+    s.league = League.get_one_league(s.league_id)
   
     db.session().add(s)
     db.session().commit()
@@ -33,6 +35,7 @@ def list_sign_ups():
 @login_required
 def remove_sign_up(sign_up_id):
     s = Sign_up.query.get(sign_up_id)
+    
     db.session().delete(s)
     db.session().commit()
 

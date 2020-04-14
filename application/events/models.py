@@ -11,9 +11,11 @@ class Event(Base):
     description = db.Column(db.String)
 
     account_id = db.Column(db.Integer, db.ForeignKey('account.id'), nullable=False)
+    league = db.relationship("League")
 
-    def __init__(self, date, league_id, distance, description):
+    def __init__(self, date, league_id, distance, description, league):
         self.date = date
         self.league_id = league_id
         self.distance = distance
         self.description = description
+        self.league = league
