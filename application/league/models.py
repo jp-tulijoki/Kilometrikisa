@@ -3,23 +3,15 @@ from application.models import Base
 from application.sign_ups.models import Sign_up
 from flask_login import current_user
 
-class League(db.Model):
+class League(Base):
 
-    id = db.Column(db.Integer, primary_key=True, unique=True)
     name = db.Column(db.String, nullable=False, unique=True)
+    description = db.Column(db.String, nullable=False)
+    organizer_account_id = db.Column(db.Integer, db.ForeignKey('account.id'), nullable=False)
 
-    def __init__(self, id, name):
-        self.id = id
+    def __init__(self, name, description):
         self.name = name
-
-    def initialize_leagues():
-        l1 = League(1, "running")
-        l2 = League(2, "walking")
-        l3 = League(3, "cycling")
-        db.session().add(l1)
-        db.session().add(l2)
-        db.session().add(l3)
-        db.session().commit()
+        self.description = description
 
     def get_leagues_with_sign_up():
         return League.query.join(Sign_up).filter(Sign_up.account_id == current_user.id)

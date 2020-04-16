@@ -8,13 +8,15 @@ class User(Base):
   
     name = db.Column(db.String(144), nullable=False)
     username = db.Column(db.String(144), nullable=False, unique=True)
+    role = db.Column(db.String(144), nullable=False)
     password = db.Column(db.String(144), nullable=False)
 
     events = db.relationship("Event", backref='account', lazy=True)
 
-    def __init__(self, name, username, password):
+    def __init__(self, name, username, role, password):
         self.name = name
         self.username = username
+        self.role = role
         self.password = password
   
     def get_id(self):
@@ -28,6 +30,9 @@ class User(Base):
 
     def is_authenticated(self):
         return True
+
+    def get_role(self):
+        return self.role
 
     @staticmethod 
     def show_top_three_runners():

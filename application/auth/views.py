@@ -45,7 +45,7 @@ def auth_registration():
         if user:
             return render_template("auth/registrationform.html", form = form, error ="Username is already taken. Please choose other username.")
 
-    user = User(form.name.data, form.username.data, bcrypt.generate_password_hash(form.password.data).decode('utf-8'))
+    user = User(form.name.data, form.username.data, form.role.data, bcrypt.generate_password_hash(form.password.data).decode('utf-8'))
 
     db.session().add(user)
     db.session().commit()
