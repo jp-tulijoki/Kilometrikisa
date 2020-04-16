@@ -15,7 +15,7 @@ def auth_login():
     user = User.query.filter_by(username=form.username.data).first()
     if not user:
         return render_template("auth/loginform.html", form = form,
-                               error = "Käyttäjää ei löydy.")
+                               error = "Username not found. Please check that you have given your username correctly.")
     else:
         if bcrypt.check_password_hash(user.password, form.password.data):
             print("Tervetuloa, " + user.name + "!")
@@ -23,7 +23,7 @@ def auth_login():
             return redirect(url_for("index"))
         else: 
             return render_template("auth/loginform.html", form = form,
-                               error = "Salasana on väärin.") 
+                               error = "Invalid password. Please check that you have given your password correctly") 
 
 @app.route("/auth/logout")
 def auth_logout():
@@ -43,7 +43,7 @@ def auth_registration():
         user = User.query.filter_by(username=form.username.data).first()
 
         if user:
-            return render_template("auth/registrationform.html", form = form, error ="Haluamasi tunnus on jo varattu.")
+            return render_template("auth/registrationform.html", form = form, error ="Username is already taken. Please choose other username.")
 
     user = User(form.name.data, form.username.data, bcrypt.generate_password_hash(form.password.data).decode('utf-8'))
 

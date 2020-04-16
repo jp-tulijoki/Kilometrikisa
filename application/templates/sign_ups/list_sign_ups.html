@@ -4,7 +4,7 @@
   <table>
     {% if sign_ups %}
     <tr>
-      <th>Ilmoittautumisesi</th>
+      <th>Your sign-ups</th>
     </tr>
     {% for sign_up in sign_ups %}
     <tr>
@@ -13,14 +13,14 @@
       <td>
       <td>
         <form method="POST" action="{{ url_for('remove_sign_up', sign_up_id = sign_up.id) }}">
-          <input type="submit" value="Poista ilmoittautuminen"/>
+          <input type="submit" value="remove sign-up"/>
         </form>
       </td>
       </td>
     </tr>
     {% endfor %}
     {% else %}
-    <tr>Ei ilmoittautumisia.</tr>
+    <tr>No sign-ups yet.</tr>
     {% endif %}
   </table>
 {% endblock %}

@@ -13,9 +13,9 @@ class League(db.Model):
         self.name = name
 
     def initialize_leagues():
-        l1 = League(1, "juoksu")
-        l2 = League(2, "kävely")
-        l3 = League(3, "pyöräily")
+        l1 = League(1, "running")
+        l2 = League(2, "walking")
+        l3 = League(3, "cycling")
         db.session().add(l1)
         db.session().add(l2)
         db.session().add(l3)
