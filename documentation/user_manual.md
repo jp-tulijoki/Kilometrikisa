@@ -3,11 +3,11 @@
 
 Käyttäjätunnus luodaan oikeassa yläkulmassa sijaitsevasta painikkeesta `create new user`. Syötä lomakkeelle nimesi sekä käyttäjänimi.
 Molempien minimipituus on 3 merkkiä ja maksimipituus 20 merkkiä. Mikäli keksimäsi käyttäjänimi on jo käytössä sovellus ilmoittaa tästä.
-Aseta rooliksi `Organizer, jos aiot toimia sarjan vastuuhenkilönä. Muutoin aseta rooliksi `normal user`. Aseta lisäksi salasana.
+Aseta rooliksi `Organizer`, jos aiot toimia sarjan vastuuhenkilönä. Muutoin aseta rooliksi `normal user`. Aseta lisäksi salasana.
 
 ## Kirjautuminen 
 
-Sovellukseen kirjaudutaan oikeassa yläkulmassa sijaitsevasta painikkeesta 'log in' ja syöttämällä käyttäjätunnus ja salasana.
+Sovellukseen kirjaudutaan oikeassa yläkulmassa sijaitsevasta painikkeesta `log in` ja syöttämällä käyttäjätunnus ja salasana.
 
 ## Sarjojen hallinnointi (vastuuhenkilöt)
 
@@ -16,7 +16,7 @@ Hallinnoimasi sarjat näet painikkeesta `show your leagues`, josta sarjan voi my
 
 ## Sarjoihin osallistuminen
 
-Sarjaan voi ilmoittautua painikkeesta `sign up`, jolloin saat näkyviin kaikki sarjat, joihin et ole jo ilmoittautunut. Ilmoittautumisesi näet painikkeesta 'show sign-ups`, josta sen voi myös poistaa.
+Sarjaan voi ilmoittautua painikkeesta `sign up`, jolloin saat näkyviin kaikki sarjat, joihin et ole jo ilmoittautunut. Ilmoittautumisesi näet painikkeesta `show sign-ups`, josta sen voi myös poistaa.
 
 ## Suorituksen lisääminen, tarkastelu ja muokkaaminen
 
