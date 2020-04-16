@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+
+{% block body %}
+  <table>
+    {% if leagues %}
+    <tr>
+      <th>Leagues organized by you</th>
+    </tr>
+    {% for league in leagues %}
+    <tr>
+      <td>Name</td>
+      <td>Description</td>
+    </tr>
+    <tr> 
+      <td>{{ league.name }}</td>
+      <td>{{ league.description }}</td>
+      <td>
+      <td>
+        <form method="POST" action="{{ url_for('delete_league', league_id = league.id) }}">
+          <input type="submit" value="delete league"/>
+        </form>
+      </td>
+      </td>
+    </tr>
+    {% endfor %}
+    {% else %}
+    <tr>You haven't organized any leagues yet.</tr>
+    {% endif %}
+  </table>
+{% endblock %}
