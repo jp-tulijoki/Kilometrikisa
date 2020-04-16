@@ -10,4 +10,8 @@ sarjan vastuuhenkilö (tunnus=leagueorganizer, salasana=leagueorganizer)
 
 [Tietokantakaavio](https://github.com/jp-tulijoki/Kilometrikisa/blob/master/documentation/database_diagram.jpg)
 
-[Käyttäjätarinat](https://github.com/jp-tulijoki/Kilometrikisa/blob/master/documentation/user%20story)
+[Käyttäjätarinat](https://github.com/jp-tulijoki/Kilometrikisa/blob/master/documentation/user_stories.md)
+
+[Asennusohje](https://github.com/jp-tulijoki/Kilometrikisa/blob/master/documentation/installation_manual.md)
+
+[Käyttöohje](https://github.com/jp-tulijoki/Kilometrikisa/blob/master/documentation/user_manual.md)
