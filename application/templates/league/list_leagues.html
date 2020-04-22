@@ -2,10 +2,8 @@
 
 {% block body %}
   <table>
+    <h1>Leagues organized by you</h1>
     {% if leagues %}
-    <tr>
-      <th>Leagues organized by you</th>
-    </tr>
     {% for league in leagues %}
     <tr>
       <td>Name</td>
@@ -24,7 +22,7 @@
     </tr>
     {% endfor %}
     {% else %}
-    <tr>You haven't organized any leagues yet.</tr>
+    <tr>You haven't organized any leagues yet. Click "Create a league" to organize a new league</tr>
     {% endif %}
   </table>
 {% endblock %}

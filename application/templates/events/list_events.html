@@ -1,11 +1,9 @@
 {% extends "layout.html" %}
 
 {% block body %}
+  <h1>Your events</h1>
   <table>
     {% if events %}
-    <tr>
-      <th>Your events</th>
-    </tr>
     {% for event in events %}
     <tr>
       <td>Date</td>
@@ -31,7 +29,7 @@
     </tr>
     {% endfor %}
     {% else %}
-    <tr>No events yet.</tr>
+    <tr>No events yet. Click "Add event to create a new event"</tr>
     {% endif %}
   </table>
 {% endblock %}
