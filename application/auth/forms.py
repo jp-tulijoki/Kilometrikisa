@@ -16,3 +16,17 @@ class RegistrationForm(FlaskForm):
 
     class Meta:
         csrf = False
+
+class EditProfileForm(FlaskForm):
+    name = StringField("Name", [validators.Length(min=3), validators.Length(max=20)])
+    role = SelectField('Role', choices=[('User', 'Normal user'), ('Organizer', 'Organizer')])
+
+    class Meta:
+        csrf = False
+
+class ChangePasswordForm(FlaskForm):
+    old_password = PasswordField("Old password", [validators.data_required])
+    new_password = PasswordField("New password", [validators.length(min=8), validators.data_required])
+
+    class Meta:
+        csrf = False

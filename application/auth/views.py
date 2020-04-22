@@ -1,9 +1,9 @@
 from flask import render_template, request, redirect, url_for
-from flask_login import login_user, logout_user
+from flask_login import login_user, logout_user, login_required, current_user
 
 from application import app, db, bcrypt
 from application.auth.models import User
-from application.auth.forms import LoginForm, RegistrationForm
+from application.auth.forms import LoginForm, RegistrationForm, EditProfileForm
 
 @app.route("/auth/login", methods=["GET", "POST"])
 def auth_login():
@@ -48,6 +48,32 @@ def auth_registration():
     user = User(form.name.data, form.username.data, form.role.data, bcrypt.generate_password_hash(form.password.data).decode('utf-8'))
 
     db.session().add(user)
+    db.session().commit()
+
+    return redirect(url_for("index"))
+
+@app.route("/auth/edit_profile", methods=["GET"])
+@login_required
+def edit_profile():
+    u = User.query.get(current_user.id)
+    form = EditProfileForm()
+    form.name.data = u.name
+    form.role.data = u.role
+    return render_template("/auth/editprofile.html", form = form)
+
+
+@app.route("/auth/save_edited_profile", methods=["POST"])
+@login_required
+def save_edited_profile():
+    form = EditProfileForm(request.form)
+
+    u = User.query.get(current_user.id)
+    u.name = form.name.data
+    u.role = form.role.data
+
+    if not form.validate_on_submit():
+        return render_template("/auth/editprofile.html", form = form)
+
     db.session().commit()
 
     return redirect(url_for("index"))
