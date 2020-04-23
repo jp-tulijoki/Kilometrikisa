@@ -1,5 +1,7 @@
 # Asennusohje
 
+## Asennus paikallisesti
+
 1. Lataa sovellus esimerkiksi komentorivikomennolla `git clone https://github.com/jp-tulijoki/Kilometrikisa`.
 2. Ota käyttöön python-virtuaaliympäristö suorittamalla komento python3 -m venv venv siinä hakemistossa, johon latasit sovelluksen.
 3. Aktivoi virtuaaliympäristö komennolla `source venv/bin/activate`.
