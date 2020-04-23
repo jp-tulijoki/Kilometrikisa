@@ -21,5 +21,15 @@ Sarjaan voi ilmoittautua painikkeesta `sign up`, jolloin saat näkyviin kaikki s
 ## Suorituksen lisääminen, tarkastelu ja muokkaaminen
 
 Suorituksen voi lisätä painikkeesta `add event` asettamalla suoritukselle päivämäärä, sarjan, johon suoritus liittyy, kilometrit ja kuvauksen.
+
 Kohdasta `list events` näet suorituksesi ja voit myös muokata ja poistaa niitä.
 
+## Käyttäjähallinta
+
+Oikella yläreunassa olevasta valikosta `edit profile` pystyt muokkaamaan käyttäjätietoja. 
+
+Painikkeesta `name and role` voit vaihtaa nimen ja myös roolin esimerkiksi, jos olet normaalikäyttäjä ja sinun tarvitsee järjestää sarja.
+
+Painikkeesta `change password` voit vaihtaa salasanan antamalla sekä nykyisen salasanasi ja asettamalla uuden.
+
+Painikkeesta `delete user` voit tarvittaessa poistaa käyttäjätunnuksesi. (Ei vielä käytössä.)
