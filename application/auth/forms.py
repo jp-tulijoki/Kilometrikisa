@@ -25,8 +25,8 @@ class EditProfileForm(FlaskForm):
         csrf = False
 
 class ChangePasswordForm(FlaskForm):
-    old_password = PasswordField("Old password", [validators.data_required])
-    new_password = PasswordField("New password", [validators.length(min=8), validators.data_required])
+    old_password = PasswordField("Old password", [validators.data_required()])
+    new_password = PasswordField("New password", [validators.length(min=8), validators.data_required()])
 
     class Meta:
         csrf = False

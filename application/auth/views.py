@@ -3,7 +3,7 @@ from flask_login import login_user, logout_user, login_required, current_user
 
 from application import app, db, bcrypt
 from application.auth.models import User
-from application.auth.forms import LoginForm, RegistrationForm, EditProfileForm
+from application.auth.forms import LoginForm, RegistrationForm, EditProfileForm, ChangePasswordForm
 
 @app.route("/auth/login", methods=["GET", "POST"])
 def auth_login():
@@ -59,7 +59,7 @@ def edit_profile():
     form = EditProfileForm()
     form.name.data = u.name
     form.role.data = u.role
-    return render_template("/auth/editprofile.html", form = form)
+    return render_template("/auth/editnameandrole.html", form = form)
 
 
 @app.route("/auth/save_edited_profile", methods=["POST"])
@@ -72,11 +72,30 @@ def save_edited_profile():
     u.role = form.role.data
 
     if not form.validate_on_submit():
-        return render_template("/auth/editprofile.html", form = form)
+        return render_template("/auth/editnameandrole.html", form = form)
 
     db.session().commit()
 
     return redirect(url_for("index"))
 
+@app.route("/auth/change_password", methods=["GET", "POST"])
+@login_required
+def change_password():
+    if request.method == "GET":
+        return render_template("/auth/changepassword.html", form = ChangePasswordForm())
+    
+    form = ChangePasswordForm(request.form)
+    u = User.query.get(current_user.id)
 
+    if not form.validate_on_submit():
+        return render_template("/auth/changepassword.html", form = form)
+
+    if not bcrypt.check_password_hash(u.password, form.old_password.data):
+        return render_template("/auth/changepassword.html", form = form, error = "Incorrect old password. Please check that you give correct old password")
+
+    u.password = bcrypt.generate_password_hash(form.new_password.data).decode('utf-8')
+
+    db.session().commit()
+
+    return redirect(url_for("index"))
 
