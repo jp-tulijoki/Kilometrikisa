@@ -1,9 +1,80 @@
 {% extends "layout.html" %}
 
 {% block body %}
+{% if events %}
+<form method="POST" action="{{ url_for('filter_events') }}">
+  <table>
+    <tr>
+      <td>
+        {{ form.league.label }}
+      </td>
+      <td>
+        {{ form.league }}
+      </td>
+        <ul>
+          {% for error in form.league.errors %}
+          <li>{{ error }}</li>
+          {% endfor %}
+        </ul>
+    </tr>
+    <tr>
+      <td>
+        {{ form.sort.label }}
+      </td>
+      <td>
+        {{ form.sort }}
+      </td>
+      <td>
+        <ul>
+          {% for error in form.sort.errors %}
+          <li>{{ error }}</li>
+          {% endfor %}
+        </ul>
+      </td>
+  </tr>
+    </tr>
+    <tr>
+      <td>
+        {{ form.order.label }}
+      </td>
+      <td>
+        {{ form.order }}
+      </td>
+      <td>
+        <ul>
+          {% for error in form.order.errors %}
+          <li>{{ error }}</li>
+          {% endfor %}
+        </ul>
+      </td>
+  </tr>
+    </tr>
+    <tr>
+      <td>
+        {{ form.number.label }}
+      </td>
+      <td>
+        {{ form.number }}
+      </td>
+      <td>
+        <ul>
+          {% for error in form.number.errors %}
+          <li>{{ error }}</li>
+          {% endfor %}
+        </ul>
+      </td>
+  </tr>
+    </tr>
+    <tr>
+  <td colspan="2">
+    <input type="submit" value="Apply filter"/>
+  </td>
+    </tr>
+</form>
+
   <h1>Your events</h1>
   <table>
-    {% if events %}
+    
     {% for event in events %}
     <tr>
       <td>Date</td>

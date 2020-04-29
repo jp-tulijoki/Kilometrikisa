@@ -3,9 +3,10 @@ from flask_login import login_required, current_user
 
 from application import app, db
 from application.events.models import Event
-from application.events.forms import EventForm
+from application.events.forms import EventForm, EventFilter
 from application.league.models import League
 from application.sign_ups.models import Sign_up
+from sqlalchemy import desc
 
 @app.route("/events/new_event", methods=["GET"])
 @login_required
@@ -31,7 +32,23 @@ def create_event():
 @app.route("/events/list_events", methods=["GET"])
 @login_required
 def list_events():
-    return render_template("/events/list_events.html", events = Event.query.filter_by(account_id=current_user.id).all())
+    return render_template("/events/list_events.html", form = EventFilter(), events = Event.query.filter_by(account_id=current_user.id).all())
+
+@app.route("/events/filter_events", methods=["POST"])
+@login_required
+def filter_events():
+    form = EventFilter(request.form)
+    league_id = form.league.data.id
+    sort = form.sort.data
+    order = form.order.data
+    number = form.number.data
+
+    if order == "asc":
+        return render_template("/events/list_events.html", form = form, events = Event.query.filter_by(league_id = league_id).\
+        filter_by(account_id=current_user.id).order_by(sort).limit(number))
+
+    return render_template("/events/list_events.html", form = form, events = Event.query.filter_by(league_id = league_id).\
+        filter_by(account_id=current_user.id).order_by(desc(sort)).limit(number))
 
 @app.route("/events/<event_id>", methods=["GET"])
 @login_required
@@ -52,7 +69,7 @@ def save_event(event_id):
 
     if not form.validate():
         return render_template("/events/edit_event.html", form = form, event_id = event_id)
-        
+
     e = Event.query.get(event_id)
     e.date = form.date.data
     e.league_id = form.league.data.id
