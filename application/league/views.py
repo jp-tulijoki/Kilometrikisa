@@ -15,6 +15,9 @@ def new_league():
 def create_league():
     form = LeagueForm(request.form)
 
+    if not form.validate():
+        return render_template("/league/new_league.html", form = form)
+
     l = League(form.name.data, form.description.data)
     l.organizer_account_id = current_user.id
   

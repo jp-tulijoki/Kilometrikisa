@@ -9,6 +9,13 @@ from application.league.models import League
 @app.route("/sign_ups/new_sign_up", methods=["GET"])
 @login_required
 def new_sign_up():
+    #subquery = db.session.query(Sign_up.league_id).filter(Sign_up.account_id == current_user.id)    
+    #leagues = League.query.filter(League.id.notin_(subquery)).first()
+    leagues = League.get_leagues_with_no_sign_up.first()
+
+    if not leagues:
+        return render_template("/sign_ups/noleaguesavailable.html")
+
     return render_template("/sign_ups/new_sign_up.html", form = SignUpForm())
 
 @app.route("/sign_ups", methods=["POST"])
