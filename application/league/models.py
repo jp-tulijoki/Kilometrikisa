@@ -7,7 +7,10 @@ class League(Base):
 
     name = db.Column(db.String, nullable=False, unique=True)
     description = db.Column(db.String, nullable=False)
-    organizer_account_id = db.Column(db.Integer, db.ForeignKey('account.id'), nullable=False)
+    organizer_account_id = db.Column(db.Integer, db.ForeignKey('account.id', ondelete='CASCADE'), nullable=False)
+
+    event = db.relationship("Event", backref="League", lazy=True, cascade="all, delete")
+    sign_up = db.relationship("Sign_up", backref="League", lazy=True, cascade="all, delete")
 
     def __init__(self, name, description):
         self.name = name

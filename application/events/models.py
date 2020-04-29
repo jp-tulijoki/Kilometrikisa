@@ -6,11 +6,11 @@ from application.models import Base
 class Event(Base):
     
     date = db.Column(db.Date, default=db.func.current_timestamp(), nullable=False)
-    league_id = db.Column(db.Integer, db.ForeignKey('league.id'), nullable= False)
+    league_id = db.Column(db.Integer, db.ForeignKey('league.id', ondelete='CASCADE'), nullable= False)
     distance = db.Column(db.Integer, nullable=False)
     description = db.Column(db.String)
 
-    account_id = db.Column(db.Integer, db.ForeignKey('account.id'), nullable=False)
+    account_id = db.Column(db.Integer, db.ForeignKey('account.id', ondelete='CASCADE'), nullable=False)
     league = db.relationship("League")
 
     def __init__(self, date, league_id, distance, description, league):

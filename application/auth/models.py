@@ -11,7 +11,9 @@ class User(Base):
     role = db.Column(db.String(144), nullable=False)
     password = db.Column(db.String(144), nullable=False)
 
-    events = db.relationship("Event", backref='account', lazy=True)
+    events = db.relationship("Event", backref='account', lazy=True, cascade='all, delete')
+    league = db.relationship("League", backref='account', lazy=True, cascade='all, delete')
+    sign_ups = db.relationship("Sign_up", backref='account', lazy=True, cascade='all, delete')
 
     def __init__(self, name, username, role, password):
         self.name = name
