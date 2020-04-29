@@ -99,3 +99,14 @@ def change_password():
 
     return redirect(url_for("index"))
 
+@app.route("/auth/delete_user", methods=["GET", "POST"])
+@login_required
+def delete_user():
+    if request.method == "GET":
+        return render_template("auth/deleteuserconfirmation.html")
+
+    user = User.query.get(current_user.id)
+    db.session().delete(user)
+    db.session().commit()
+
+    return redirect(url_for("index"))

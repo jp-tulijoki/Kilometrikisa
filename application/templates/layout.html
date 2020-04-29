@@ -45,7 +45,7 @@
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="editProfileMenuButton">
             <a class="dropdown-item" href="{{ url_for('edit_profile') }}">Edit name and role</a>
             <a class="dropdown-item" href="{{ url_for('change_password') }}">Change password</a>
-            <a class="dropdown-item" href="#">Delete user</a>
+            <a class="dropdown-item" href="{{ url_for('delete_user') }}">Delete user</a>
         </div>
           <a href="{{ url_for('auth_logout') }}" style="padding-left: 15px; padding-top: 5px;">Log out</a>
 	        {% else %}
