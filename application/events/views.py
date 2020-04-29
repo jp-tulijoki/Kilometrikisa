@@ -18,7 +18,7 @@ def create_event():
     form = EventForm(request.form)
 
     if not form.validate():
-        return render_template("/events/new_event.html", form = form)
+        return render_template("/events/new_event.html", form = form, sign_ups = Sign_up.query.filter_by(account_id=current_user.id).all())
 
     e = Event(form.date.data, form.league.data.id, form.distance.data, form.description.data, form.league.data)
     e.account_id = current_user.id
@@ -49,6 +49,10 @@ def edit_event(event_id):
 @login_required
 def save_event(event_id):
     form = EventForm(request.form)
+
+    if not form.validate():
+        return render_template("/events/edit_event.html", form = form, event_id = event_id)
+        
     e = Event.query.get(event_id)
     e.date = form.date.data
     e.league_id = form.league.data.id
