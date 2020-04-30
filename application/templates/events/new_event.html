@@ -8,11 +8,13 @@
     <tr>
       <td>{{ form.date.label }}</td>
       <td>{{ form.date }}</td>
+      <td>
         <ul>
           {% for error in form.date.errors %}
             <li>{{ error }}</li>
           {% endfor %}
         </ul>
+      </td>
       </tr>
       <tr>
         <td>{{ form.league.label }}</td>
