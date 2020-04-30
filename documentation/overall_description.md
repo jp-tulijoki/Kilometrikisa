@@ -2,7 +2,8 @@
 
 Tietokanta on normalisoitu, mikä edesauttaa tiedon eheyttä, mutta asettaa reunaehdon, että sarjoja järjestävät vastuuhenkilöt
 toimivat vastuullisesti. Käytännössä vastuuhenkilön vastuu ilmenee siinä, että hänen poistaessaan luomansa sarjan tai koko
-käyttäjätunnuksensa, poistetaan tietokannasta myös sarjaan liittyvät ilmoittautumiset ja tapahtumat.
+käyttäjätunnuksensa, poistetaan tietokannasta myös sarjaan liittyvät ilmoittautumiset ja tapahtumat. Sovellustasolla tähän on
+varauduttu siten, että muiden taulujen tietoihin vaikuttavia poistoja tehtäessä sovellus varoittaa poiston vaikutuksesta. Käytännön tasolla oletetaan myös, että sarjan vastuuhenkilö tekee sarjan nimeen ja kuvaukseen ainoastaan sellaisia muokkauksia, jotka eivät merkittävästi muuta sarjan luonnetta (esim. muuta juoksusarjaa kävelysarjaksi). 
 
 Tietokantaan liittyvät käyttäjäroolit ja autorisointi on pyritty pitämään kevyenä, koska kyse on matalan kynnyksen
 epävirallisesta toiminnasta. Käytännössä tämä tarkoittaa, että käyttäjä voi vapaasti ottaa vastuuhenkilön roolin tai luopua
@@ -14,6 +15,8 @@ Hakutoimintojen nopeuttamiseksi viiteavaimet on indeksoitu. Sovelluksen luontees
 Tietokantasovelluksen kieli on englanti, mutta käyttöohjeet ja dokumentaatio on suomeksi.
 
 ## Tietokantakaavio
+
+![Tietokantakaavio](https://github.com/jp-tulijoki/Kilometrikisa/blob/master/documentation/database_diagram.jpg)
 
 ## CREATE TABLE -lauseet
 
@@ -55,10 +58,10 @@ CREATE TABLE sign_up (
 	FOREIGN KEY(account_id) REFERENCES account (id) ON DELETE CASCADE, 
 	FOREIGN KEY(league_id) REFERENCES league (id) ON DELETE CASCADE
 );
-```
-```sql
 CREATE INDEX ix_sign_up_account_id ON sign_up (account_id);
 CREATE INDEX ix_sign_up_league_id ON sign_up (league_id);
+```
+```sql
 CREATE TABLE event (
 	id INTEGER NOT NULL, 
 	date_created DATETIME, 
@@ -79,5 +82,6 @@ CREATE INDEX ix_event_league_id ON event (league_id);
 ## Jatkokehitysideoita
 
 - tietokannan laajentaminen siten, että se mahdollistaa myös joukkueiden välisen kilpailun
+- aikaleimojen hyödyntäminen (esim. ilmoittautumisten ja  sarjojen luontien päiväysten tarkastelu)
 - sarjojen arkistoinnin mahdollistaminen
 - sarjojen organisoinnin luovuttaminen toiselle käyttäjälle
