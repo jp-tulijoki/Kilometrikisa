@@ -4,11 +4,11 @@
   <table>
     <h1>Leagues organized by you</h1>
     {% if leagues %}
-    {% for league in leagues %}
     <tr>
       <td>Name</td>
       <td>Description</td>
     </tr>
+    {% for league in leagues %}
     <tr> 
       <td>{{ league.name }}</td>
       <td>{{ league.description }}</td>
