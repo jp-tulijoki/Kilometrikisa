@@ -1,4 +1,4 @@
-# Käyttötapaukset
+# Käyttäjätarinat
 
 Käyttäjä haluaa luoda tunnuksen. Toteutettu. SQL-kysely: 
 
