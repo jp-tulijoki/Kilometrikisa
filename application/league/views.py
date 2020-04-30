@@ -59,8 +59,6 @@ def save_edited_league(league_id):
     if not form.validate():
         return render_template("/league/edit_league.html", form = form, league_id = league_id)
 
-    league = League.query.get(form.name.data)
-
     l = League.query.get(league_id)
     l.name = form.name.data
     l.description = form.description.data
