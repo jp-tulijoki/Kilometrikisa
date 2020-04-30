@@ -8,7 +8,7 @@ Testitunnukset:
 normaali käyttäjä (tunnus=normaluser, salasana=normaluser)
 sarjan vastuuhenkilö (tunnus=leagueorganizer, salasana=leagueorganizer)
 
-[Tietokantakaavio](https://github.com/jp-tulijoki/Kilometrikisa/blob/master/documentation/database_diagram.jpg)
+[Tietokannan kuvaus](https://github.com/jp-tulijoki/Kilometrikisa/blob/master/documentation/overall_description.md)
 
 [Käyttäjätarinat](https://github.com/jp-tulijoki/Kilometrikisa/blob/master/documentation/user_stories.md)
 
