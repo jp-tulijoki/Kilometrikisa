@@ -1,9 +1,6 @@
 # Tietokantakuvaus
 
-Tietokanta on normalisoitu, mikä edesauttaa tiedon eheyttä, mutta asettaa reunaehdon, että sarjoja järjestävät vastuuhenkilöt
-toimivat vastuullisesti. Käytännössä vastuuhenkilön vastuu ilmenee siinä, että hänen poistaessaan luomansa sarjan tai koko
-käyttäjätunnuksensa, poistetaan tietokannasta myös sarjaan liittyvät ilmoittautumiset ja tapahtumat. Sovellustasolla tähän on
-varauduttu siten, että muiden taulujen tietoihin vaikuttavia poistoja tehtäessä sovellus varoittaa poiston vaikutuksesta. Käytännön tasolla oletetaan myös, että sarjan vastuuhenkilö tekee sarjan nimeen ja kuvaukseen ainoastaan sellaisia muokkauksia, jotka eivät merkittävästi muuta sarjan luonnetta (esim. muuta juoksusarjaa kävelysarjaksi). 
+Tietokanta on normalisoitu ja tietokantataulut ovat funktionaalisesti riippuvaisia toisistaan. Tämä edesauttaa tiedon eheyttä, mutta asettaa reunaehdon, että sarjoja järjestävät vastuuhenkilöt toimivat vastuullisesti. Käytännössä vastuuhenkilön vastuu ilmenee siinä, että hänen poistaessaan luomansa sarjan tai kokokäyttäjätunnuksensa, poistetaan tietokannasta myös sarjaan liittyvät ilmoittautumiset ja tapahtumat. Sovellustasolla tähän onvarauduttu siten, että muiden taulujen tietoihin vaikuttavia poistoja tehtäessä sovellus varoittaa poiston vaikutuksesta. Käytännön tasolla oletetaan myös, että sarjan vastuuhenkilö tekee sarjan nimeen ja kuvaukseen ainoastaan sellaisia muokkauksia, jotka eivät merkittävästi muuta sarjan luonnetta (esim. muuta juoksusarjaa kävelysarjaksi). 
 
 Tietokantaan liittyvät käyttäjäroolit ja autorisointi on pyritty pitämään kevyenä, koska kyse on matalan kynnyksen
 epävirallisesta toiminnasta. Käytännössä tämä tarkoittaa, että käyttäjä voi vapaasti ottaa vastuuhenkilön roolin tai luopua
