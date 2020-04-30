@@ -19,6 +19,11 @@ def create_league():
     if not form.validate():
         return render_template("/league/new_league.html", form = form)
 
+    league = League.query.filter(League.name == form.name.data)
+
+    if league:
+        return render_template("/league/new_league.html", form = form, error = "League name is already in use. Please choose another league name.")
+
     l = League(form.name.data, form.description.data)
     l.organizer_account_id = current_user.id
   
@@ -49,6 +54,11 @@ def save_edited_league(league_id):
     if not form.validate():
         return render_template("/league/edit_league.html", form = form, league_id = league_id)
     
+    league = League.query.filter(League.name == form.name.data)
+
+    if league:
+        return render_template("/league/new_league.html", form = form, error = "League name is already in use. Please choose another league name.")
+
     l = League.query.get(league_id)
     l.name = form.name.data
     l.description = form.description.data

@@ -10,7 +10,7 @@
         {{ sign_up.league.name }}</td>
       <td>
       <td>
-        <form method="POST" action="{{ url_for('remove_sign_up', sign_up_id = sign_up.id) }}">
+        <form method="GET" action="{{ url_for('remove_sign_up', sign_up_id = sign_up.id) }}">
           <input type="submit" value="remove sign-up"/>
         </form>
       </td>

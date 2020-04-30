@@ -1,5 +1,6 @@
 from flask import render_template, request, redirect, url_for
 from flask_login import login_required, current_user
+from sqlalchemy import text
 
 from application import app, db
 from application.sign_ups.models import Sign_up
@@ -37,12 +38,20 @@ def create_sign_up():
 def list_sign_ups():
     return render_template("/sign_ups/list_sign_ups.html", sign_ups = Sign_up.query.filter_by(account_id=current_user.id).all())
 
-@app.route("/sign_ups/remove/<sign_up_id>", methods=["POST"])
+@app.route("/sign_ups/remove/<sign_up_id>", methods=["GET","POST"])
 @login_required
 def remove_sign_up(sign_up_id):
-    s = Sign_up.query.get(sign_up_id)
-    
-    db.session().delete(s)
+    sign_up = Sign_up.query.get(sign_up_id)
+    league = League.get_one_league(sign_up.league_id)
+
+    if request.method == "GET":
+        
+        return render_template("/sign_ups/removesignupconfirmation.html", sign_up = sign_up, league = league)
+
+    db.session().delete(sign_up)
     db.session().commit()
+
+    stmt = text("DELETE FROM Event WHERE Event.league_id =:league_id AND Event.account_id =:account_id").params(league_id = league.id, account_id = current_user.id)
+    db.engine.execute(stmt)
 
     return redirect(url_for("list_sign_ups"))
