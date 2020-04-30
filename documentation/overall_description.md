@@ -17,6 +17,7 @@ Tietokantasovelluksen kieli on englanti, mutta käyttöohjeet ja dokumentaatio o
 
 ## CREATE TABLE -lauseet
 
+```sql
 CREATE TABLE account (
 	id INTEGER NOT NULL, 
 	date_created DATETIME, 
@@ -28,6 +29,8 @@ CREATE TABLE account (
 	PRIMARY KEY (id), 
 	UNIQUE (username)
 );
+```
+```sql
 CREATE TABLE league (
 	id INTEGER NOT NULL, 
 	date_created DATETIME, 
@@ -40,6 +43,8 @@ CREATE TABLE league (
 	FOREIGN KEY(organizer_account_id) REFERENCES account (id) ON DELETE CASCADE
 );
 CREATE INDEX ix_league_organizer_account_id ON league (organizer_account_id);
+```
+```sql
 CREATE TABLE sign_up (
 	id INTEGER NOT NULL, 
 	date_created DATETIME, 
@@ -50,6 +55,8 @@ CREATE TABLE sign_up (
 	FOREIGN KEY(account_id) REFERENCES account (id) ON DELETE CASCADE, 
 	FOREIGN KEY(league_id) REFERENCES league (id) ON DELETE CASCADE
 );
+```
+```sql
 CREATE INDEX ix_sign_up_account_id ON sign_up (account_id);
 CREATE INDEX ix_sign_up_league_id ON sign_up (league_id);
 CREATE TABLE event (
@@ -67,7 +74,7 @@ CREATE TABLE event (
 );
 CREATE INDEX ix_event_account_id ON event (account_id);
 CREATE INDEX ix_event_league_id ON event (league_id);
-
+```
 
 ## Jatkokehitysideoita
 
