@@ -17,7 +17,10 @@ class League(Base):
     def __init__(self, name, description):
         self.name = name
         self.description = description
-
+    
+    def get_all_leagues():
+        return League.query.filter()
+    
     def get_leagues_with_sign_up():
         return League.query.join(Sign_up).filter(Sign_up.account_id == current_user.id)
 
@@ -38,18 +41,32 @@ class League(Base):
 
         return League.query.get(league_id)
 
-    def show_top_three_in_random_league(league_id):
+    def standings(league_id, limit):
 
         stmt = text("SELECT Account.name, Sum(Event.distance) as total_distance FROM Account "
                     "LEFT JOIN Event ON Event.account_id = Account.id "
                     "WHERE Event.league_id = :league_id "
                     "GROUP BY Account.name "
-                    "ORDER BY total_distance DESC LIMIT 3").params(league_id = league_id)
+                    "ORDER BY total_distance DESC LIMIT :limit").params(league_id = league_id, limit = limit)
         
         result = db.engine.execute(stmt)
         response = []
         for row in result:
             response.append({"name": row[0], "distance":row[1]})
+
+        return response
+
+    def three_leagues_with_most_sign_ups():
+
+        stmt = text("SELECT League.name, Count(Sign_up.league_id) as sign_ups FROM League "
+                    "LEFT JOIN Sign_up ON Sign_up.league_id = League.id "
+                    "GROUP BY League.name "
+                    "ORDER BY sign_ups DESC LIMIT 3")
+        
+        result = db.engine.execute(stmt)
+        response = []
+        for row in result:
+            response.append({"league_name": row[0], "sign_ups": row[1]})
 
         return response
 

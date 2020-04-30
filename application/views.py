@@ -6,8 +6,14 @@ from application.league.models import League
 
 @app.route('/')
 def index():
-    league = League.get_random_league()
-    league_name = league.name
-    top_three = League.show_top_three_in_random_league(league.id)
+    league = League.query.first()
 
-    return render_template("index.html", top_three=top_three, league_name = league_name)
+    if not league:
+        return render_template("index.html")
+
+    random_league = League.get_random_league()
+    random_league_name = random_league.name
+    random_top_three = League.standings(random_league.id, 3)
+    top_three_leagues = League.three_leagues_with_most_sign_ups()
+
+    return render_template("index.html", random_top_three=random_top_three, random_league_name = random_league_name, top_three_leagues = top_three_leagues)

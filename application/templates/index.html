@@ -2,19 +2,32 @@
 
 {% block body %}
   Welcome!
-  {% if top_three is defined %}
+  {% if random_top_three is defined %}
   <p>
-    Top three in {{ league_name }}:
+    Top three in {{ random_league_name }}:
   </p>
   
   <ol>
-    {% for response in top_three %}
+    {% for response in random_top_three %}
     <li>
-      {{ response.name }} {{ response.distance }} kilometers
+      {{ response.name }}, {{ response.distance }} kilometers
     </li>
     {% endfor %}
   </ol>
   
+  {% endif %}
+
+  {% if top_three_leagues is defined %}
+  Three leagues with most sign-ups
+
+  <ol>
+    {% for response in top_three_leagues %}
+    <li>
+      {{ response.league_name }}, {{ response.sign_ups }} sign-ups
+    </li>
+    {% endfor %}
+  </ol>
+
   {% endif %}
   
   {% endblock %}
