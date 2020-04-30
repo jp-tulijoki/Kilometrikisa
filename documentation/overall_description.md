@@ -15,7 +15,7 @@ Tietokantasovelluksen kieli on englanti, mutta käyttöohjeet ja dokumentaatio o
 
 ## Tietokantakaavio
 
-!(https://github.com/jp-tulijoki/Kilometrikisa/blob/master/documentation/database_diagram.jpg)
+![Tietokantakaavio](https://github.com/jp-tulijoki/Kilometrikisa/blob/master/documentation/database_diagram.jpg)
 
 ## CREATE TABLE -lauseet
 
