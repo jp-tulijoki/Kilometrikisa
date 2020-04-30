@@ -31,6 +31,7 @@ class League(Base):
     def get_one_league(league_id):
         return League.query.get(league_id)
 
+    # Returns a random league for random stats in index. 
     def get_random_league():
         league_query = db.session.query(League.id).all()
         league_ids = []
@@ -41,6 +42,7 @@ class League(Base):
 
         return League.query.get(league_id)
 
+    #Parametrized standings aggregate query    
     def standings(league_id, limit):
 
         stmt = text("SELECT Account.name, Sum(Event.distance) as total_distance FROM Account "
@@ -56,6 +58,7 @@ class League(Base):
 
         return response
 
+    #Aggregate query for most popular leagues
     def three_leagues_with_most_sign_ups():
 
         stmt = text("SELECT League.name, Count(Sign_up.league_id) as sign_ups FROM League "

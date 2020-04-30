@@ -1,31 +1,36 @@
 {% extends "layout.html" %}
 
 {% block body %}
-  
-<form method="POST" action="{{ url_for('filtered_standings') }}">
-    <table>
-      <tr>
-        <td>
-          {{ form.league.label }}
-        </td>
-        <td>
-          {{ form.league }}
-        </td>
-          <ul>
-            {% for error in form.league.errors %}
-            <li>{{ error }}</li>
-            {% endfor %}
-          </ul>
-      </tr>
-      <tr>
-    <td colspan="2">
-      <input type="submit" value="Apply filter"/>
-    </td>
-      </tr>
-  </form>
+<h1>Standings</h1>
+  <p>
+    Please choose a league:
+  </p>
 
-  {% if standings is defined %}
-  
+<form method="POST" action="{{ url_for('filtered_standings') }}">
+  <table>
+    <tr>
+      <td>{{ form.league.label }}</td>
+      <td>{{ form.league }}</td>
+      <td>
+        <ul>
+          {% for error in form.league.errors %}
+            <li>{{ error }}</li>
+          {% endfor %}
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2">
+        <input type="submit" value="Apply filter"/>
+      </td>
+    </tr>
+  </table>
+</form>
+
+{% if standings is defined %}
+<p>
+  <b>Standings for {{ league_name }}:</b>
+</p>
   <ol>
     {% for response in standings %}
     <li>
@@ -34,6 +39,6 @@
     {% endfor %}
   </ol>
   
-  {% endif %}
+{% endif %}
 
-  {% endblock %}
+{% endblock %}

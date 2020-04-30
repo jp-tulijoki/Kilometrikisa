@@ -2,13 +2,17 @@
 
 {% block body %}
 <div class="alert alert-danger" role="alert">
-You are about to remove your sign-up from "{{league.name}}". All events concerning this league will be deleted as well.
-This can not be undone. Are you sure you want to proceed?
+  <p>
+    You are about to remove your sign-up from "{{league.name}}". All events concerning this league will be deleted as well.
+    This can not be undone. Are you sure you want to proceed?
+  </p>
 </div>
-<form method="POST" action="{{ url_for('remove_sign_up', sign_up_id = sign_up.id) }}">
+<div>
+  <form method="POST" action="{{ url_for('remove_sign_up', sign_up_id = sign_up.id) }}">
     <input type="submit" value="Yes, remove my sign-up."/>
-</form>
-<a href="{{ url_for('list_sign_ups') }}">
+  </form>
+  <a href="{{ url_for('list_sign_ups') }}">
     <input type="submit" value="No, return to sign-ups list."/>
-</a>
+  </a>
+</div>
 {% endblock %}

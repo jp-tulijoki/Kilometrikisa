@@ -1,8 +1,6 @@
 from application import db
 from application.models import Base
 
-
-
 class Event(Base):
     
     date = db.Column(db.Date, default=db.func.current_timestamp(), nullable=False)

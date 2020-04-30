@@ -7,6 +7,7 @@ from application.sign_ups.models import Sign_up
 from application.sign_ups.forms import SignUpForm
 from application.league.models import League
 
+#Sign up form which checks for available leagues
 @app.route("/sign_ups/new_sign_up", methods=["GET"])
 @login_required
 def new_sign_up():
@@ -18,6 +19,7 @@ def new_sign_up():
 
     return render_template("/sign_ups/new_sign_up.html", form = SignUpForm())
 
+#Sign-up function
 @app.route("/sign_ups", methods=["POST"])
 @login_required
 def create_sign_up():
@@ -33,11 +35,13 @@ def create_sign_up():
   
     return redirect(url_for("list_sign_ups"))
 
+#Sign-up list
 @app.route("/sign_ups/list_sign_ups", methods=["GET"])
 @login_required
 def list_sign_ups():
     return render_template("/sign_ups/list_sign_ups.html", sign_ups = Sign_up.query.filter_by(account_id=current_user.id).all())
 
+#Sign-up removal with alert and deletion of related events
 @app.route("/sign_ups/remove/<sign_up_id>", methods=["GET","POST"])
 @login_required
 def remove_sign_up(sign_up_id):

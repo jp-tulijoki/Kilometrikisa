@@ -13,11 +13,10 @@
       <td>{{ league.name }}</td>
       <td>{{ league.description }}</td>
       <td>
-      <td>
-          <form method="GET" action="{{ url_for('edit_league', league_id = league.id) }}">
-            <input type="submit" value="Edit league"/>
-          </form>
-        </td>
+        <form method="GET" action="{{ url_for('edit_league', league_id = league.id) }}">
+          <input type="submit" value="Edit league"/>
+        </form>
+      </td>
       <td>
         <form method="GET" action="{{ url_for('delete_league', league_id = league.id) }}">
           <input type="submit" value="Delete league"/>
@@ -27,7 +26,9 @@
     </tr>
     {% endfor %}
     {% else %}
-    <tr>You haven't organized any leagues yet. Click "Create a league" to organize a new league</tr>
+    <p>
+      <b>You haven't organized any leagues yet. Click "Create a league" to organize a new league</b>
+    </p>
     {% endif %}
   </table>
 {% endblock %}

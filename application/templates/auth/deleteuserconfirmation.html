@@ -2,13 +2,15 @@
 
 {% block body %}
 <div class="alert alert-danger" role="alert">
-You are about to delete your user account. If you have created events, leagues or sign-ups, those will be deleted as well.
-This can not be undone. Are you sure you want to proceed?
+  <p>
+    You are about to delete your user account. If you have created events, leagues or sign-ups, those will be deleted as well.
+    <b>This can not be undone.</b> Are you sure you want to proceed?
+  </p>
 </div>
 <form method="POST" action="{{ url_for('delete_user') }}">
-    <input type="submit" value="Yes, delete my account."/>
+  <input type="submit" value="Yes, delete my account."/>
 </form>
 <a href="{{ url_for('index') }}">
-    <input type="submit" value="No, return to main menu."/>
+  <input type="submit" value="No, return to main menu."/>
 </a>
 {% endblock %}

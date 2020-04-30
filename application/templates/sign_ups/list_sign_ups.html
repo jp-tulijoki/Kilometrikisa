@@ -6,19 +6,18 @@
     {% if sign_ups %}
     {% for sign_up in sign_ups %}
     <tr>
-      <td>
-        {{ sign_up.league.name }}</td>
-      <td>
+      <td>{{ sign_up.league.name }}</td>
       <td>
         <form method="GET" action="{{ url_for('remove_sign_up', sign_up_id = sign_up.id) }}">
           <input type="submit" value="remove sign-up"/>
         </form>
       </td>
-      </td>
     </tr>
     {% endfor %}
     {% else %}
-    <tr>No sign-ups yet. Click "Sign up" to add a new sign-up.</tr>
+    <p>
+      <b>No sign-ups yet. Click "Sign up" to add a new sign-up.</b>
+    </p>
     {% endif %}
   </table>
 {% endblock %}

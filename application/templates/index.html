@@ -1,33 +1,28 @@
 {% extends "layout.html" %}
 
 {% block body %}
-  Welcome!
+  <h1>Welcome!</h1>
+
   {% if random_top_three is defined %}
-  <p>
-    Top three in {{ random_league_name }}:
-  </p>
-  
-  <ol>
-    {% for response in random_top_three %}
-    <li>
-      {{ response.name }}, {{ response.distance }} kilometers
-    </li>
-    {% endfor %}
-  </ol>
-  
+    <p>
+      <b>Top three in {{ random_league_name }}:</b>
+    </p>
+    <ol>
+      {% for response in random_top_three %}
+        <li>{{ response.name }}, {{ response.distance }} kilometers</li>
+      {% endfor %}
+    </ol>
   {% endif %}
 
   {% if top_three_leagues is defined %}
-  Three leagues with most sign-ups
-
-  <ol>
-    {% for response in top_three_leagues %}
-    <li>
-      {{ response.league_name }}, {{ response.sign_ups }} sign-ups
-    </li>
-    {% endfor %}
-  </ol>
-
+    <p>
+      <b>Three leagues with most sign-ups</b>
+    </p>
+    <ol>
+      {% for response in top_three_leagues %}
+      <li>{{ response.league_name }}, {{ response.sign_ups }} sign-ups</li>
+      {% endfor %}
+    </ol>
   {% endif %}
   
   {% endblock %}

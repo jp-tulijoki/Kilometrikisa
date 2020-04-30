@@ -2,13 +2,15 @@
 
 {% block body %}
 <div class="alert alert-danger" role="alert">
-You are about to delete league "{{league.name}}". All sign-ups and events concerning this league will be deleted as well.
-This can not be undone. Are you sure you want to proceed?
+  <p>
+    You are about to delete league "{{league.name}}". All sign-ups and events concerning this league will be deleted as well.
+    This can not be undone. Are you sure you want to proceed?
+  </p>
 </div>
 <form method="POST" action="{{ url_for('delete_league', league_id = league.id) }}">
-    <input type="submit" value="Yes, delete this league."/>
+  <input type="submit" value="Yes, delete this league."/>
 </form>
 <a href="{{ url_for('list_leagues') }}">
-    <input type="submit" value="No, return to league list."/>
+  <input type="submit" value="No, return to league list."/>
 </a>
 {% endblock %}
