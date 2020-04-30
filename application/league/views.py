@@ -31,6 +31,30 @@ def create_league():
 def list_leagues():
     return render_template("/league/list_leagues.html", leagues = League.query.filter_by(organizer_account_id=current_user.id).all())
 
+@app.route("/league/<league_id>", methods=["GET"])
+@login_required('Organizer')
+def edit_league(league_id):
+    l = League.query.get(league_id)
+    form = LeagueForm()
+    form.name.data = l.name
+    form.description.data = l.description
+    return render_template("/league/edit_league.html", form = form, league_id = league_id)
+
+@app.route("/league/<league_id>", methods=["POST"])
+@login_required('Organizer')
+def save_edited_league(league_id):
+    form = LeagueForm(request.form)
+
+    if not form.validate():
+        return render_template("/league/edit_league.html", form = form, league_id = league_id)
+    
+    l = League.query.get(league_id)
+    l.name = form.name.data
+    l.description = form.description.data
+    db.session().commit()
+
+    return redirect(url_for("list_leagues"))
+
 @app.route("/league/delete/<league_id>", methods=["POST"])
 @login_required('Organizer')
 def delete_league(league_id):
