@@ -37,3 +37,7 @@ Painikkeesta `name and role` voit vaihtaa nimen ja myös roolin esimerkiksi, jos
 Painikkeesta `change password` voit vaihtaa salasanan antamalla sekä nykyisen salasanasi ja asettamalla uuden.
 
 Painikkeesta `delete user` voit tarvittaessa poistaa käyttäjätunnuksesi. Huomioithan, että tämä poistaa kaikki sinuun liittyvät ilmoittautumiset ja tapahtumat. Lisäksi, jos olet järjestänyt sarjoja, kyseiset sarjat ja niihin liittyvät ilmoittautumiset ja suoritukset poistetaan, joten harkitsethan tarkkaan käyttäjätunnuksen poistoa.
+
+## Uloskirjautuminen
+
+Ollessasi kirjautuneena voit kirjautua ulos oikean yläkulman `Log out` painikkeesta.
