@@ -1,6 +1,9 @@
 from application import db
 from application.models import Base
 from sqlalchemy import text
+from random import randint
+
+from application.league.models import League
 
 class User(Base):
 
@@ -35,18 +38,3 @@ class User(Base):
 
     def get_role(self):
         return self.role
-
-    @staticmethod 
-    def show_top_three_runners():
-        stmt = text("SELECT Account.name, Sum(Event.distance) as total_distance FROM Account "
-                    "LEFT JOIN Event ON Event.account_id = Account.id "
-                    "WHERE Event.league_id = 1 "
-                    "GROUP BY Account.name "
-                    "ORDER BY total_distance DESC LIMIT 3")
-        
-        result = db.engine.execute(stmt)
-        response = []
-        for row in result:
-            response.append({"name": row[0], "distance":row[1]})
-
-        return response

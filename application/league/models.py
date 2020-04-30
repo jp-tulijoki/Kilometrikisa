@@ -2,6 +2,8 @@ from application import db
 from application.models import Base
 from application.sign_ups.models import Sign_up
 from flask_login import current_user
+from random import randint
+from sqlalchemy import text
 
 class League(Base):
 
@@ -25,3 +27,29 @@ class League(Base):
 
     def get_one_league(league_id):
         return League.query.get(league_id)
+
+    def get_random_league():
+        league_query = db.session.query(League.id).all()
+        league_ids = []
+        for row in league_query:
+            league_ids.append(row[0])
+        random = randint(0, len(league_ids) - 1)
+        league_id = league_ids[random]
+
+        return League.query.get(league_id)
+
+    def show_top_three_in_random_league(league_id):
+
+        stmt = text("SELECT Account.name, Sum(Event.distance) as total_distance FROM Account "
+                    "LEFT JOIN Event ON Event.account_id = Account.id "
+                    "WHERE Event.league_id = :league_id "
+                    "GROUP BY Account.name "
+                    "ORDER BY total_distance DESC LIMIT 3").params(league_id = league_id)
+        
+        result = db.engine.execute(stmt)
+        response = []
+        for row in result:
+            response.append({"name": row[0], "distance":row[1]})
+
+        return response
+

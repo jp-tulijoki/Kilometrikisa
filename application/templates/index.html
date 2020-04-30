@@ -2,13 +2,13 @@
 
 {% block body %}
   Welcome!
-  {% if top_three_runners is defined %}
+  {% if top_three is defined %}
   <p>
-    Top three runners:
+    Top three in {{ league_name }}:
   </p>
   
   <ol>
-    {% for response in top_three_runners %}
+    {% for response in top_three %}
     <li>
       {{ response.name }} {{ response.distance }} kilometers
     </li>
