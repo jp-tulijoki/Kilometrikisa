@@ -1,6 +1,6 @@
 # Tietokantakuvaus
 
-Tietokanta on normalisoitu ja tietokantataulut ovat funktionaalisesti riippuvaisia toisistaan. Tämä edesauttaa tiedon eheyttä, mutta asettaa reunaehdon, että sarjoja järjestävät vastuuhenkilöt toimivat vastuullisesti. Käytännössä vastuuhenkilön vastuu ilmenee siinä, että hänen poistaessaan luomansa sarjan tai kokokäyttäjätunnuksensa, poistetaan tietokannasta myös sarjaan liittyvät ilmoittautumiset ja tapahtumat. Sovellustasolla tähän onvarauduttu siten, että muiden taulujen tietoihin vaikuttavia poistoja tehtäessä sovellus varoittaa poiston vaikutuksesta. Käytännön tasolla oletetaan myös, että sarjan vastuuhenkilö tekee sarjan nimeen ja kuvaukseen ainoastaan sellaisia muokkauksia, jotka eivät merkittävästi muuta sarjan luonnetta (esim. muuta juoksusarjaa kävelysarjaksi). 
+Tietokanta on normalisoitu ja tietokantataulut ovat funktionaalisesti riippuvaisia toisistaan. Tämä edesauttaa tiedon eheyttä, mutta asettaa reunaehdon, että sarjoja järjestävät vastuuhenkilöt toimivat vastuullisesti. Käytännössä vastuuhenkilön vastuu ilmenee siinä, että hänen poistaessaan luomansa sarjan tai kokokäyttäjätunnuksensa, poistetaan tietokannasta myös sarjaan liittyvät ilmoittautumiset ja tapahtumat. Sovellustasolla tähän on varauduttu siten, että muiden taulujen tietoihin vaikuttavia poistoja tehtäessä sovellus varoittaa poiston vaikutuksesta. Käytännön tasolla oletetaan myös, että sarjan vastuuhenkilö tekee sarjan nimeen ja kuvaukseen ainoastaan sellaisia muokkauksia, jotka eivät merkittävästi muuta sarjan luonnetta (esim. muuta juoksusarjaa kävelysarjaksi). 
 
 Tietokantaan liittyvät käyttäjäroolit ja autorisointi on pyritty pitämään kevyenä, koska kyse on matalan kynnyksen
 epävirallisesta toiminnasta. Käytännössä tämä tarkoittaa, että käyttäjä voi vapaasti ottaa vastuuhenkilön roolin tai luopua
@@ -9,7 +9,9 @@ käyttäjätiliinsä liittyvistä toiminnoista, eikä sovelluksessa ole admin-ro
 
 Hakutoimintojen nopeuttamiseksi viiteavaimet on indeksoitu. Sovelluksen luonteesta johtuen haut tehdään lähinnä avaimilla, eikä vapaata tekstihakua ole, joten muita indeksejä ei ole. 
 
-Tietokantasovelluksen kieli on englanti, mutta käyttöohjeet ja dokumentaatio on suomeksi.
+Sovellus käyttää paikallisesta SQLite-tietokantajärjestelmää ja Herokussa PostgreSQL-tietokantajärjestelmää.
+
+Tietokantasovelluksen kieli on englanti, mutta käyttöohjeet ja dokumentaatio on suomeksi. 
 
 ## Tietokantakaavio
 
